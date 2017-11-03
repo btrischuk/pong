@@ -22,7 +22,15 @@ export default class Paddle {
           break;
       }
     });
-}
+  }
+    //where the paddle is in space, for collision
+  coordinates(x, y, width, height) {
+    let leftX = x;
+    let rightX = x + width;
+    let topY = y;
+    let bottomY = y + height;
+    return { leftX, rightX, topY, bottomY };
+  }
 
 up() {
   this.y = Math.max(this.y - this.speed, 0);
@@ -41,7 +49,7 @@ down() {
     rect.setAttributeNS(null, 'x', this.x);
     rect.setAttributeNS(null, 'y', this.y);
     rect.setAttributeNS(null, 'fill', 'green');  
-      
+
     svg.appendChild(rect);
   }
 }

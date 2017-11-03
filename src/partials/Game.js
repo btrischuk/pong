@@ -4,7 +4,7 @@ import Board from './Board'
 import Paddle from './Paddle'
 import Ball from './Ball'
 
-
+ 
 export default class Game {
 
 	constructor(element, width, height) {
@@ -42,10 +42,22 @@ export default class Game {
 			KEYS.up,
 			KEYS.down
 		);
-		
+
+		//this inside is the same as outside of code block
+		document.addEventListener('keydown', event => {
+			if ( event.key === KEYS.spaceBar ) {
+				this.pause = !this.pause;
+			}
+		});
 	}
 
 	render() {
+//if pause is true, return and stop render
+		if (this.pause) {
+			return;
+		}
+
+
 		this.gameElement.innerHTML = '';
 
 		let svg = document.createElementNS(SVG_NS, 'svg');
@@ -56,8 +68,11 @@ export default class Game {
 
 		this.gameElement.appendChild(svg);
 
+		// this.ball.rendor(svg);
+		// this.ball.rendor(svg);
+		
 		this.board.render(svg);
-		this.ball.rendor(svg);
+		this.ball.rendor(svg, this.player1, this.player2);
 		this.player1.render(svg);
 		this.player2.render(svg);
 	}
