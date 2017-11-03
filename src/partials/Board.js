@@ -1,4 +1,3 @@
-
 import {SVG_NS} from '../settings'
 
 export default class Board {
@@ -16,7 +15,6 @@ export default class Board {
     rect.setAttributeNS(null, 'fill', '#353535');
     svg.appendChild(rect);
 
-    
     let line = document.createElementNS(SVG_NS, 'line');
     line.setAttributeNS(null, 'x1', this.width/2);
     line.setAttributeNS(null, 'x2', this.width/2);
