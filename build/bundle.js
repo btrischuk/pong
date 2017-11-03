@@ -78,6 +78,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 var SVG_NS = exports.SVG_NS = 'http://www.w3.org/2000/svg';
 
+var boardGap = exports.boardGap = 10;
+var paddleWidth = exports.paddleWidth = 8;
+var paddleHeight = exports.paddleHeight = 56;
+var ballRadius = exports.ballRadius = 8;
+
 var KEYS = exports.KEYS = {
   a: 'a', // player 1 up key
   z: 'z', // player 1 down key
@@ -85,8 +90,6 @@ var KEYS = exports.KEYS = {
   down: 'ArrowDown', // player 2 down key
   spaceBar: '' // we'll use this later...
 };
-
-// this paddlewidth....
 
 /***/ }),
 /* 1 */
@@ -136,11 +139,12 @@ var Game = function () {
 		this.gameElement = document.getElementById(this.element);
 		this.board = new _Board2.default(this.width, this.height);
 
-		this.boardGap = 10;
-		this.paddleWidth = 8;
-		this.paddleHeight = 56;
+		this.boardGap = _settings.boardGap;
+		this.paddleWidth = _settings.paddleWidth;
+		this.paddleHeight = _settings.paddleHeight;
+		this.ballRadius = _settings.ballRadius;
 
-		this.ball = new _Ball2.default(8, this.width, this.height);
+		this.ball = new _Ball2.default(this.ballRadius, this.width, this.height);
 
 		this.player1 = new _Paddle2.default(this.height, this.paddleWidth, this.paddleHeight, this.boardGap, (this.height - this.paddleHeight) / 2, _settings.KEYS.a, _settings.KEYS.z);
 
@@ -213,16 +217,12 @@ var _Game2 = _interopRequireDefault(_Game);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// create a game instance
 var game = new _Game2.default('game', 512, 256);
-// const paddle =
 
 (function gameLoop() {
     game.render();
     requestAnimationFrame(gameLoop);
 })();
-
-// game.render();
 
 /***/ }),
 /* 5 */
@@ -242,10 +242,10 @@ var _settings = __webpack_require__(0);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Ball = function () {
-  function Ball(radius, boardWidth, boardHeight) {
+  function Ball(ballRadius, boardWidth, boardHeight) {
     _classCallCheck(this, Ball);
 
-    this.radius = radius;
+    this.ballRadius = ballRadius;
     this.boardWidth = boardWidth;
     this.boardHeight = boardHeight;
     this.direction = 1;
@@ -256,7 +256,7 @@ var Ball = function () {
     value: function rendor(svg) {
       var circle = document.createElementNS(_settings.SVG_NS, 'circle');
 
-      circle.setAttributeNS(null, 'r', this.radius);
+      circle.setAttributeNS(null, 'r', this.ballRadius);
       circle.setAttributeNS(null, 'fill', 'purple');
       circle.setAttributeNS(null, 'stroke', 'blue');
       circle.setAttributeNS(null, 'cx', this.boardWidth / 2);
@@ -264,6 +264,12 @@ var Ball = function () {
 
       svg.appendChild(circle);
     }
+
+    // reset() {
+    //   this.x = this.boardWidth / 2;
+    //   this.y = this.boardHeight / 2;
+    // }
+
   }]);
 
   return Ball;
@@ -387,6 +393,7 @@ var Paddle = function () {
       rect.setAttributeNS(null, 'x', this.x);
       rect.setAttributeNS(null, 'y', this.y);
       rect.setAttributeNS(null, 'fill', 'green');
+
       svg.appendChild(rect);
     }
   }]);

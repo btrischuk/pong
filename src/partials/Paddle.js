@@ -40,7 +40,8 @@ down() {
     rect.setAttributeNS(null, 'height', this.height);
     rect.setAttributeNS(null, 'x', this.x);
     rect.setAttributeNS(null, 'y', this.y);
-    rect.setAttributeNS(null, 'fill', 'green');    
+    rect.setAttributeNS(null, 'fill', 'green');  
+      
     svg.appendChild(rect);
   }
 }

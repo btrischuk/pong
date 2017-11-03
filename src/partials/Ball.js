@@ -20,4 +20,9 @@ export default class Ball {
     
     svg.appendChild(circle);
   }
+
+  // reset() {
+  //   this.x = this.boardWidth / 2;
+  //   this.y = this.boardHeight / 2;
+  // }
 }
