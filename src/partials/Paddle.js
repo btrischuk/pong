@@ -1,4 +1,4 @@
-import {SVG_NS} from '../settings'
+import {SVG_NS} from '../settings';
 
 
 export default class Paddle {

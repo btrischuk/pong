@@ -3,6 +3,7 @@ import { SVG_NS, KEYS, boardGap, paddleHeight, paddleWidth, ballRadius } from '.
 import Board from './Board'
 import Paddle from './Paddle'
 import Ball from './Ball'
+import score from './Score'
 
  
 export default class Game {
@@ -14,6 +15,9 @@ export default class Game {
 	
 		this.gameElement = document.getElementById(this.element)
 		this.board = new Board(this.width, this.height);
+
+		this.score1 = new score(100, 20, 30);
+		this.score2 = new score(370, 20, 30);
 
 		this.boardGap = boardGap;
 		this.paddleWidth = paddleWidth;
@@ -58,7 +62,7 @@ export default class Game {
 		}
 
 
-		this.gameElement.innerHTML = '';
+		this.gameElement.innerHTML = ' ';
 
 		let svg = document.createElementNS(SVG_NS, 'svg');
 		svg.setAttributeNS(null, 'width', this.width);
@@ -67,13 +71,15 @@ export default class Game {
 		svg.setAttributeNS(null, 'version', '1.1');
 
 		this.gameElement.appendChild(svg);
-
-		// this.ball.rendor(svg);
-		// this.ball.rendor(svg);
 		
 		this.board.render(svg);
 		this.ball.rendor(svg, this.player1, this.player2);
+		this.ball.rendor(svg, this.player1, this.player2);		
+		this.ball.rendor(svg, this.player1, this.player2);
 		this.player1.render(svg);
 		this.player2.render(svg);
+		this.score1.render(svg, this.player1.score);
+		this.score2.render(svg, this.player2.score);
+		
 	}
 }
