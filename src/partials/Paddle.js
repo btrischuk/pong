@@ -8,22 +8,22 @@ export default class Paddle {
     this.height = height;
     this.x = x;
     this.y = y;
-
+    
     this.speed = 10;
     this.score = 0;
-
+    
     document.addEventListener('keydown', event => {
       switch(event.key) {
         case up:
-          this.up();
-          break;
-          case down:
-          this.down();
-          break;
+        this.up();
+        break;
+        case down:
+        this.down();
+        break;
       }
     });
   }
-    //where the paddle is in space, for collision
+  //where the paddle is in space, for collision
   coordinates(x, y, width, height) {
     let leftX = x;
     let rightX = x + width;
@@ -31,25 +31,25 @@ export default class Paddle {
     let bottomY = y + height;
     return { leftX, rightX, topY, bottomY };
   }
-
-up() {
-  this.y = Math.max(this.y - this.speed, 0);
-}
-
-down() {
-  this.y = Math.min(this.y + this.speed, this.boardHeight - this.height);
-}
-
+  
+  up() {
+    this.y = Math.max(this.y - this.speed, 0);
+  }
+  
+  down() {
+    this.y = Math.min(this.y + this.speed, this.boardHeight - this.height);
+  }
+  
   render(svg){
     let rect = document.createElementNS(SVG_NS, 'rect');
-
+    
     rect.setAttributeNS(null, 'boardHeight', this.boardHeight);
     rect.setAttributeNS(null, 'width', this.width);
     rect.setAttributeNS(null, 'height', this.height);
     rect.setAttributeNS(null, 'x', this.x);
     rect.setAttributeNS(null, 'y', this.y);
     rect.setAttributeNS(null, 'fill', 'green');  
-
+    
     svg.appendChild(rect);
   }
 }

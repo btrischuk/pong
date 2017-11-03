@@ -10,7 +10,6 @@ export default class Ball {
     this.ping = new Audio('public/sounds/pong-03.wav');
     this.pong = new Audio('public/sounds/pong-02.wav');
     
-    
     this.reset();
   }
   
