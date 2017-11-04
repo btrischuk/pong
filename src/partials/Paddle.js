@@ -2,13 +2,12 @@ import {SVG_NS} from '../settings';
 
 
 export default class Paddle {
-  constructor(boardHeight, width, height, x, y, up, down) {
+  constructor(boardHeight, width, height, x, y, up, down, name) {
     this.boardHeight = boardHeight;
     this.width = width;
     this.height = height;
     this.x = x;
     this.y = y;
-    
     this.speed = 10;
     this.score = 0;
     
@@ -22,6 +21,9 @@ export default class Paddle {
         break;
       }
     });
+
+    this.name = name;
+    
   }
   //where the paddle is in space, for collision
   coordinates(x, y, width, height) {

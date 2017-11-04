@@ -41,7 +41,8 @@ export default class Game {
 			this.boardGap,
 			(this.height - this.paddleHeight) / 2,
 			KEYS.a,
-			KEYS.z
+			KEYS.z,
+			'steve'
 		);
 		
 		this.player2 = new Paddle(
@@ -51,7 +52,8 @@ export default class Game {
 			(this.width - this.paddleWidth - this.boardGap),
 			(this.height - this.paddleHeight) / 2,
 			KEYS.up,
-			KEYS.down
+			KEYS.down,
+			'bob'
 		);
 		
 		//this inside is the same as outside of code block
@@ -86,7 +88,6 @@ export default class Game {
 		this.player1.render(svg);
 		this.player2.render(svg);
 		this.score1.render(svg, this.player1.score);
-		this.score2.render(svg, this.player2.score);
-		
+		this.score2.render(svg, this.player2.score);	
 	}
 }

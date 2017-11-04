@@ -3,6 +3,7 @@ import {SVG_NS} from '../settings';
 export default class Ball {
   
   constructor(ballRadius, boardWidth, boardHeight) {
+    // this.ballRadius2 =ballRadius2;
     this.ballRadius = ballRadius;
     this.boardWidth = boardWidth;
     this.boardHeight = boardHeight;
@@ -25,7 +26,6 @@ export default class Ball {
     }
     //gives ball direction on start
     this.vx = this.direction * (6 - Math.abs(this.vy));
-    
   }
   
   wallCollision(player1, player2) {
@@ -34,19 +34,13 @@ export default class Ball {
     const hitTop = this.y - this.ballRadius <= 0;
     const hitBottom = this.y + this.ballRadius >= this.boardHeight;
     
-    // if (hitLeft || hitRight) {
-    //   this.vx = -this.vx;
-    // } else if (hitTop || hitBottom) {
-    //   this.vy = -this.vy;
-    // }
-    
     if (hitLeft) {
       this.direction = -1;
-      this.goal(player2);
+      this.goal(player2, player1);
       
     } else if (hitRight) {
       this.direction = 1;
-      this.goal(player1);      
+      this.goal(player1, player2);      
       
     } else if (hitTop || hitBottom) {
       this.vy = -this.vy;
@@ -88,9 +82,25 @@ export default class Ball {
       }
     }
   }  
+
+  // ballCollision (ball) {
+  //   const ballHit = this.ballRadius <= this.ballRadius;
+
+  //   const hitRight = this.x + this.ballRadius >= this.boardWidth;
+    
+  //   if (
+  //     this.ballRadius <= this.ballRadius)
+  // }
   
-  goal (player) {
-    player.score ++;
+  goal(point, nopoint) {
+    point.score ++;
+    if (point.score > 1) {
+
+      point.score = 0;
+      nopoint.score = 0;
+      console.log(point.name);
+    }
+    
     this.reset();
   }
   
