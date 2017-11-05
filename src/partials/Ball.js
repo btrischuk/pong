@@ -3,7 +3,6 @@ import {SVG_NS} from '../settings';
 export default class Ball {
   
   constructor(ballRadius, boardWidth, boardHeight) {
-    // this.ballRadius2 =ballRadius2;
     this.ballRadius = ballRadius;
     this.boardWidth = boardWidth;
     this.boardHeight = boardHeight;
@@ -73,7 +72,7 @@ export default class Ball {
     } else {
       let paddle = player1.coordinates(player1.x, player1.y, player1.width, player1.height);
       let {rightX, topY, bottomY} = paddle;
-      //detect collision on the left hand side (player 1)
+          //detect collision on the left hand side (player 1)
       if (
         this.x - this.ballRadius <= rightX // left paddle
         && this.y >= topY
@@ -121,6 +120,7 @@ export default class Ball {
     
     this.wallCollision(player1, player2);
     this.paddleCollision(player1, player2);
+
     let circle = document.createElementNS(SVG_NS, 'circle');
     
     //position ball in the center of board

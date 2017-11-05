@@ -42,7 +42,7 @@ export default class Game {
 			(this.height - this.paddleHeight) / 2,
 			KEYS.a,
 			KEYS.z,
-			'steve'
+			'steve' 
 		);
 		
 		this.player2 = new Paddle(
@@ -70,7 +70,6 @@ export default class Game {
 			return;
 		}
 		
-		
 		this.gameElement.innerHTML = ' ';
 		
 		let svg = document.createElementNS(SVG_NS, 'svg');
@@ -83,7 +82,6 @@ export default class Game {
 		
 		this.board.render(svg);
 		this.ball.rendor(svg, this.player1, this.player2);		
-		// this.ball.rendor(svg, this.player1, this.player2);
 		this.ball2.rendor(svg, this.player1, this.player2);
 		this.player1.render(svg);
 		this.player2.render(svg);

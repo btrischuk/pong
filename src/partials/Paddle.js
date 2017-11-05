@@ -8,7 +8,7 @@ export default class Paddle {
     this.height = height;
     this.x = x;
     this.y = y;
-    this.speed = 10;
+    this.speed = 30;
     this.score = 0;
     this.name = name;
     
@@ -23,7 +23,7 @@ export default class Paddle {
       }
     });
   }
-  
+
   coordinates(x, y, width, height) {                //where the paddle is in space, for collision
     let leftX = x;
     let rightX = x + width;             
