@@ -99,14 +99,17 @@ ballCollision() {
   //     this.ballRadius <= this.ballRadius)
   // }
   
-  goal(point, nopoint) {
+  goal(point) {
     point.score ++;
+    this.reset();
+    
     if (point.score >= 5) {
 
-      point.score = 0;
-      nopoint.score = 0;
-      this.pause();
-      this.reset();
+      // point.score = 0;
+      // nopoint.score = 0;
+      this.game.restart();
+      // this.game.togglePause();
+
     
 
 		// if (this.pause) {
@@ -114,10 +117,11 @@ ballCollision() {
 		// }
       
       // console.log(point.name);
-    }
     
-    this.reset();
-    // this.pause();
+    }
+              // this.reset();
+
+
   }
   
   
@@ -134,7 +138,7 @@ ballCollision() {
     //position ball in the center of board
     circle.setAttributeNS(null, 'r', this.ballRadius);
     circle.setAttributeNS(null, 'fill', 'purple');
-    circle.setAttributeNS(null, 'stroke', 'blue');
+    circle.setAttributeNS(null, 'stroke', 'white');
     circle.setAttributeNS(null, 'cx', this.x);
     circle.setAttributeNS(null, 'cy', this.y);
     

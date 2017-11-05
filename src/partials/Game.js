@@ -26,13 +26,18 @@ export default class Game {
 		this.score1 = new score(100, 20, 30, this);
 		this.score2 = new score(370, 20, 30, this);
 		
+		
 		this.boardGap = boardGap;
 		this.paddleWidth = paddleWidth;
 		this.paddleHeight = paddleHeight;
 		this.ballRadius = ballRadius;
 		
-		this.ball = new Ball(this.ballRadius, this.width, this.height);
-		this.ball2 = new Ball(this.ballRadius , this.width, this.height);
+		this.ball = new Ball(this.ballRadius, this.width, this.height, this);
+		this.ball2 = new Ball(this.ballRadius/5 , this.width, this.height, this);
+		this.ball2 = new Ball(this.ballRadius/5 , this.width, this.height, this);
+		this.ball2 = new Ball(this.ballRadius/5 , this.width, this.height, this);
+		
+			
 		
 		this.player1 = new Paddle(
 			this.height,
@@ -62,6 +67,50 @@ export default class Game {
 				this.pause = !this.pause;
 			}
 		});
+	}
+
+	togglePause() {
+		this.pause = !this.pause;
+	}
+
+	restart () {
+		this.board = new Board(this.width, this.height);
+		
+		this.score1 = new score(100, 20, 30, this);
+		this.score2 = new score(370, 20, 30, this);
+		
+		this.boardGap = boardGap;
+		this.paddleWidth = paddleWidth;
+		this.paddleHeight = paddleHeight;
+		this.ballRadius = ballRadius;
+		
+		this.ball = new Ball(this.ballRadius, this.width, this.height, this);
+		this.ball2 = new Ball(this.ballRadius/5, this.width, this.height, this);		
+		
+		this.player1 = new Paddle(
+			this.height,
+			this.paddleWidth,
+			this.paddleHeight,
+			this.boardGap,
+			(this.height - this.paddleHeight) / 2,
+			KEYS.a,
+			KEYS.z,
+			'steve' 
+		);
+		
+		this.player2 = new Paddle(
+			this.height,
+			this.paddleWidth,
+			this.paddleHeight,
+			(this.width - this.paddleWidth - this.boardGap),
+			(this.height - this.paddleHeight) / 2,
+			KEYS.up,
+			KEYS.down,
+			'bob'
+		);
+
+		this.togglePause();
+		
 	}
 	
 	render() {
