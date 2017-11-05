@@ -2,13 +2,15 @@ import {SVG_NS} from '../settings';
 
 export default class Ball {
   
-  constructor(ballRadius, boardWidth, boardHeight) {
+  constructor(ballRadius, boardWidth, boardHeight, game) {
     this.ballRadius = ballRadius;
     this.boardWidth = boardWidth;
     this.boardHeight = boardHeight;
     this.direction = 1;
-    this.meow = new Audio('public/sounds/animals021.wav');
+    this.meow = new Audio('public/sounds/catsmeow.wav');
     this.pong = new Audio('public/sounds/pong-02.wav');
+    this.game = game;   
+    // this.pause = pause; 
     
     this.reset();
   }
@@ -67,7 +69,7 @@ export default class Ball {
       ) {
         this.vx = -this.vx;
         this.pong.play();
-      }
+        }
       
     } else {
       let paddle = player1.coordinates(player1.x, player1.y, player1.width, player1.height);
@@ -83,7 +85,11 @@ export default class Ball {
       }
     }
   }  
-
+ballCollision() {
+  if (this.ball + this.ballRadius <= this.ball2 + this.ballRadius) {
+    this.direction = -1;
+  }
+}
   // ballCollision (ball) {
   //   const ballHit = this.ballRadius <= this.ballRadius;
 
@@ -99,17 +105,19 @@ export default class Ball {
 
       point.score = 0;
       nopoint.score = 0;
+      this.pause();
+      this.reset();
+    
 
-    //   render() {
-		// //if pause is true, return and stop render
 		// if (this.pause) {
 		// 	return;
-		// }}
+		// }
       
       // console.log(point.name);
     }
     
     this.reset();
+    // this.pause();
   }
   
   

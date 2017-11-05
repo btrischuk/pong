@@ -98,13 +98,17 @@ h2 {
 }
 input {
   color: blue;
-  background-color: crimson;  
+  background-color: darkgrey;  
   text-transform: uppercase;
   font-weight: bold;
   text-align: center;
   border: none;
   border-radius: 50px;
   padding: 5px;
+}
+
+placeholder {
+  color:green;
 }
 
 img {

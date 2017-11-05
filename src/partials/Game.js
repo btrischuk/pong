@@ -23,8 +23,8 @@ export default class Game {
 		this.gameElement = document.getElementById(this.element)
 		this.board = new Board(this.width, this.height);
 		
-		this.score1 = new score(100, 20, 30);
-		this.score2 = new score(370, 20, 30);
+		this.score1 = new score(100, 20, 30, this);
+		this.score2 = new score(370, 20, 30, this);
 		
 		this.boardGap = boardGap;
 		this.paddleWidth = paddleWidth;
@@ -32,7 +32,7 @@ export default class Game {
 		this.ballRadius = ballRadius;
 		
 		this.ball = new Ball(this.ballRadius, this.width, this.height);
-		this.ball2 = new Ball(this.ballRadius / 5, this.width, this.height);
+		this.ball2 = new Ball(this.ballRadius , this.width, this.height);
 		
 		this.player1 = new Paddle(
 			this.height,

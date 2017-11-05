@@ -19,9 +19,9 @@ A basic pong game using SVGs.
 ## Keys
 
 **Player 1:**
-* a: up
-* z: down
+* a : up
+* z : down
 
 **Player 2:**
 * ▲ : up
-* ▼: down
+* ▼ : down
