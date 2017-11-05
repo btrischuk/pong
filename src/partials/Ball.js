@@ -8,7 +8,7 @@ export default class Ball {
     this.boardWidth = boardWidth;
     this.boardHeight = boardHeight;
     this.direction = 1;
-    this.ping = new Audio('public/sounds/pong-03.wav');
+    this.meow = new Audio('public/sounds/animals021.wav');
     this.pong = new Audio('public/sounds/pong-02.wav');
     
     this.reset();
@@ -37,10 +37,12 @@ export default class Ball {
     if (hitLeft) {
       this.direction = -1;
       this.goal(player2, player1);
+      this.meow.play();
       
     } else if (hitRight) {
       this.direction = 1;
       this.goal(player1, player2);      
+      this.meow.play();
       
     } else if (hitTop || hitBottom) {
       this.vy = -this.vy;
@@ -65,7 +67,7 @@ export default class Ball {
         // if ball Y is <= the paddle bottom Y
       ) {
         this.vx = -this.vx;
-        this.ping.play();
+        this.pong.play();
       }
       
     } else {
@@ -78,7 +80,7 @@ export default class Ball {
         && this.y <= bottomY 
       ){
         this.vx = -this.vx;
-        this.ping.play();
+        this.pong.play();
       }
     }
   }  
