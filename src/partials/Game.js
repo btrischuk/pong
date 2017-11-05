@@ -32,7 +32,7 @@ export default class Game {
 		this.ballRadius = ballRadius;
 		
 		this.ball = new Ball(this.ballRadius, this.width, this.height);
-		this.ball2 = new Ball(this.ballRadius * 2, this.width, this.height);
+		this.ball2 = new Ball(this.ballRadius / 5, this.width, this.height);
 		
 		this.player1 = new Paddle(
 			this.height,
@@ -82,9 +82,9 @@ export default class Game {
 		this.gameElement.appendChild(svg);
 		
 		this.board.render(svg);
+		this.ball.rendor(svg, this.player1, this.player2);		
 		this.ball.rendor(svg, this.player1, this.player2);
 		this.ball2.rendor(svg, this.player1, this.player2);
-		// this.ball.rendor(svg, this.player1, this.player2);
 		this.player1.render(svg);
 		this.player2.render(svg);
 		this.score1.render(svg, this.player1.score);

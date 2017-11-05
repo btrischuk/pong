@@ -10,6 +10,7 @@ export default class Paddle {
     this.y = y;
     this.speed = 10;
     this.score = 0;
+    this.name = name;
     
     document.addEventListener('keydown', event => {
       switch(event.key) {
@@ -21,14 +22,11 @@ export default class Paddle {
         break;
       }
     });
-
-    this.name = name;
-    
   }
-  //where the paddle is in space, for collision
-  coordinates(x, y, width, height) {
+  
+  coordinates(x, y, width, height) {                //where the paddle is in space, for collision
     let leftX = x;
-    let rightX = x + width;
+    let rightX = x + width;             
     let topY = y;
     let bottomY = y + height;
     return { leftX, rightX, topY, bottomY };

@@ -94,11 +94,18 @@ export default class Ball {
   
   goal(point, nopoint) {
     point.score ++;
-    if (point.score > 1) {
+    if (point.score >= 5) {
 
       point.score = 0;
       nopoint.score = 0;
-      console.log(point.name);
+
+    //   render() {
+		// //if pause is true, return and stop render
+		// if (this.pause) {
+		// 	return;
+		// }}
+      
+      // console.log(point.name);
     }
     
     this.reset();
