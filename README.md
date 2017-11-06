@@ -2,7 +2,7 @@
 
 A basic pong game using SVGs.
 
-![Screen Shot Ping Game](./public/images/screen-shot-pong.png "pong game")
+![Screen Shot Ping Game](public/images/screen-shot-pong.png "pong game")
 
 ## Setup
 
