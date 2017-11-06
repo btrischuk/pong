@@ -9,19 +9,17 @@ export default class Ball {
     this.direction = 1;
     this.meow = new Audio('public/sounds/catsmeow.wav');
     this.pong = new Audio('public/sounds/pong-02.wav');
-    this.game = game;   
-    // this.pause = pause; 
-    
+    this.game = game;       
     this.reset();
   }
   
   reset() {
     this.x = this.boardWidth / 2;
     this.y = this.boardHeight / 2;
-    
-    //prevents ball from being launched at 0 
     this.vy = 0;
-    
+
+    //prevents ball from being launched at 0 
+
     while (this.vy === 0 ) {
       this.vy = Math.floor(Math.random() * 10 - 5);
     }
@@ -58,8 +56,6 @@ export default class Ball {
       //have these below variables to use in our code
       let {leftX, topY, bottomY} = paddle;  
 
-   
-      
       if (
         // right eddge of the ball is >= left edge of the paddle
         this.x + this.ballRadius >= leftX
@@ -72,15 +68,15 @@ export default class Ball {
         this.vx *= 1.1;
         this.vy *= 1.1;
         this.vx = -this.vx;
-     
+        
         this.pong.play();
-        }
+      }
       
     } else {
       let paddle = player1.coordinates(player1.x, player1.y, player1.width, player1.height);
       let {rightX, topY, bottomY} = paddle;
-     
-          //detect collision on the left hand side (player 1)
+      
+      //detect collision on the left hand side (player 1)
       if (
         this.x - this.ballRadius <= rightX // left paddle
         && this.y >= topY
@@ -89,25 +85,12 @@ export default class Ball {
         this.vx *= 1.1;
         this.vy *= 1.1;
         this.vx = -this.vx;
-      
+        
         this.pong.play();
       }
     }
   }  
-// ballCollision() {
-//   if (this.ball + this.ballRadius <= this.ball2 + this.ballRadius) {
-//     this.direction = -1;
-//   }
-// }
-  // ballCollision (ball) {
-  //   const ballHit = this.ballRadius <= this.ballRadius;
 
-  //   const hitRight = this.x + this.ballRadius >= this.boardWidth;
-    
-  //   if (
-  //     this.ballRadius <= this.ballRadius)
-  // }
-  
   goal(point) {
     point.score ++;
     this.reset();
@@ -115,9 +98,9 @@ export default class Ball {
     if (point.score >= 5) {
       this.game.restart();
     }
-      this.reset();
+    this.reset();
   }
-
+  
   rendor(svg, player1, player2) {
     // gives ball direction 
     this.y = this.y + this.vy;
@@ -125,7 +108,7 @@ export default class Ball {
     
     this.wallCollision(player1, player2);
     this.paddleCollision(player1, player2);
-
+    
     let circle = document.createElementNS(SVG_NS, 'circle');
     
     circle.setAttributeNS(null, 'r', this.ballRadius);

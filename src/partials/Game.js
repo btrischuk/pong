@@ -41,7 +41,6 @@ export default class Game {
 			(this.height - this.paddleHeight) / 2,
 			KEYS.a,
 			KEYS.z,
-			'steve' 
 		);
 		
 		this.player2 = new Paddle(
@@ -52,7 +51,6 @@ export default class Game {
 			(this.height - this.paddleHeight) / 2,
 			KEYS.up,
 			KEYS.down,
-			'bob'
 		);
 		
 		//this inside is the same as outside of code block
@@ -62,11 +60,11 @@ export default class Game {
 			}
 		});
 	}
-
+	
 	togglePause() {
 		this.pause = !this.pause;
 	}
-
+	
 	restart () {
 		this.board = new Board(this.width, this.height);
 		
@@ -89,7 +87,6 @@ export default class Game {
 			(this.height - this.paddleHeight) / 2,
 			KEYS.a,
 			KEYS.z,
-			'steve' 
 		);
 		
 		this.player2 = new Paddle(
@@ -100,7 +97,6 @@ export default class Game {
 			(this.height - this.paddleHeight) / 2,
 			KEYS.up,
 			KEYS.down,
-			'bob'
 		);
 		this.togglePause();
 	}
@@ -128,15 +124,5 @@ export default class Game {
 		this.player2.render(svg);
 		this.score1.render(svg, this.player1.score);
 		this.score2.render(svg, this.player2.score);	
-		
-
-		if (this.player1.score === 5) {
-
-			this.winner1.render(svg, 'Winner:player 1');
-
-		} else if(this.player2.score === 5){
-
-			this.winner2.render(svg, 'winner:player 2');
-		}
 	}
 }

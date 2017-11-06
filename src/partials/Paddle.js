@@ -11,14 +11,14 @@ export default class Paddle {
     this.speed = 5;
     this.score = 0;
     this.name = name;
-
+    
     document.addEventListener('keyup', event => {
       switch(event.key) {
         case up:
-          this.upPressed = false;
+        this.upPressed = false;
         break;
         case down:
-          this.downPressed = false;
+        this.downPressed = false;
         break;
       }
     });
@@ -26,7 +26,7 @@ export default class Paddle {
     document.addEventListener('keydown', event => {
       switch(event.key) {
         case up:
-          this.upPressed = true;
+        this.upPressed = true;
         break;
         case down:
         this.downPressed = true;
@@ -34,7 +34,7 @@ export default class Paddle {
       }
     });
   }
-
+  
   coordinates(x, y, width, height) {                //where the paddle is in space, for collision
     let leftX = x;
     let rightX = x + width;             
