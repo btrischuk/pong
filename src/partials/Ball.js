@@ -57,6 +57,8 @@ export default class Ball {
       let paddle = player2.coordinates(player2.x, player2.y, player2.width, player2.height);
       //have these below variables to use in our code
       let {leftX, topY, bottomY} = paddle;  
+
+   
       
       if (
         // right eddge of the ball is >= left edge of the paddle
@@ -67,29 +69,36 @@ export default class Ball {
         && this.y <= bottomY
         // if ball Y is <= the paddle bottom Y
       ) {
+        this.vx *= 1.1;
+        this.vy *= 1.1;
         this.vx = -this.vx;
+     
         this.pong.play();
         }
       
     } else {
       let paddle = player1.coordinates(player1.x, player1.y, player1.width, player1.height);
       let {rightX, topY, bottomY} = paddle;
+     
           //detect collision on the left hand side (player 1)
       if (
         this.x - this.ballRadius <= rightX // left paddle
         && this.y >= topY
         && this.y <= bottomY 
       ){
+        this.vx *= 1.1;
+        this.vy *= 1.1;
         this.vx = -this.vx;
+      
         this.pong.play();
       }
     }
   }  
-ballCollision() {
-  if (this.ball + this.ballRadius <= this.ball2 + this.ballRadius) {
-    this.direction = -1;
-  }
-}
+// ballCollision() {
+//   if (this.ball + this.ballRadius <= this.ball2 + this.ballRadius) {
+//     this.direction = -1;
+//   }
+// }
   // ballCollision (ball) {
   //   const ballHit = this.ballRadius <= this.ballRadius;
 
@@ -104,27 +113,11 @@ ballCollision() {
     this.reset();
     
     if (point.score >= 5) {
-
-      // point.score = 0;
-      // nopoint.score = 0;
       this.game.restart();
-      // this.game.togglePause();
-
-    
-
-		// if (this.pause) {
-		// 	return;
-		// }
-      
-      // console.log(point.name);
-    
     }
-              // this.reset();
-
-
+      this.reset();
   }
-  
-  
+
   rendor(svg, player1, player2) {
     // gives ball direction 
     this.y = this.y + this.vy;
@@ -135,7 +128,6 @@ ballCollision() {
 
     let circle = document.createElementNS(SVG_NS, 'circle');
     
-    //position ball in the center of board
     circle.setAttributeNS(null, 'r', this.ballRadius);
     circle.setAttributeNS(null, 'fill', 'purple');
     circle.setAttributeNS(null, 'stroke', 'white');

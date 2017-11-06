@@ -12,7 +12,6 @@ import Paddle from './Paddle'
 import Ball from './Ball'
 import score from './Score'
 
-
 export default class Game {
 	
 	constructor(element, width, height) {
@@ -26,7 +25,6 @@ export default class Game {
 		this.score1 = new score(100, 20, 30, this);
 		this.score2 = new score(370, 20, 30, this);
 		
-		
 		this.boardGap = boardGap;
 		this.paddleWidth = paddleWidth;
 		this.paddleHeight = paddleHeight;
@@ -34,10 +32,6 @@ export default class Game {
 		
 		this.ball = new Ball(this.ballRadius, this.width, this.height, this);
 		this.ball2 = new Ball(this.ballRadius/5 , this.width, this.height, this);
-		this.ball2 = new Ball(this.ballRadius/5 , this.width, this.height, this);
-		this.ball2 = new Ball(this.ballRadius/5 , this.width, this.height, this);
-		
-			
 		
 		this.player1 = new Paddle(
 			this.height,
@@ -108,9 +102,7 @@ export default class Game {
 			KEYS.down,
 			'bob'
 		);
-
 		this.togglePause();
-		
 	}
 	
 	render() {
@@ -136,5 +128,15 @@ export default class Game {
 		this.player2.render(svg);
 		this.score1.render(svg, this.player1.score);
 		this.score2.render(svg, this.player2.score);	
+		
+
+		if (this.player1.score === 5) {
+
+			this.winner1.render(svg, 'Winner:player 1');
+
+		} else if(this.player2.score === 5){
+
+			this.winner2.render(svg, 'winner:player 2');
+		}
 	}
 }

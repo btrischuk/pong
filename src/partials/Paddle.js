@@ -8,17 +8,28 @@ export default class Paddle {
     this.height = height;
     this.x = x;
     this.y = y;
-    this.speed = 30;
+    this.speed = 5;
     this.score = 0;
     this.name = name;
+
+    document.addEventListener('keyup', event => {
+      switch(event.key) {
+        case up:
+          this.upPressed = false;
+        break;
+        case down:
+          this.downPressed = false;
+        break;
+      }
+    });
     
     document.addEventListener('keydown', event => {
       switch(event.key) {
         case up:
-        this.up();
+          this.upPressed = true;
         break;
         case down:
-        this.down();
+        this.downPressed = true;
         break;
       }
     });
@@ -41,6 +52,13 @@ export default class Paddle {
   }
   
   render(svg){
+    if (this.downPressed) {
+      this.down(); 
+    }
+    if (this.upPressed) {
+      this.up();
+    }
+    
     let rect = document.createElementNS(SVG_NS, 'rect');
     
     rect.setAttributeNS(null, 'boardHeight', this.boardHeight);
