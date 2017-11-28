@@ -3,7 +3,7 @@ import {
 	KEYS,
 	boardGap,
 	paddleHeight,
-	paddleWidth,
+	paddleWidth, 
 	ballRadius
 } from '../settings.js';
 
@@ -65,7 +65,7 @@ export default class Game {
 		this.pause = !this.pause;
 	}
 	
-	restart () {
+	restart() {
 		this.board = new Board(this.width, this.height);
 		
 		this.score1 = new score(100, 20, 30, this);
