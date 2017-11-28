@@ -37,13 +37,7 @@ A basic pong game using SVGs.
 * ▼ : down
 
 ## The Process
-During the creation of this project I was able to learn many new skills using webpack and interacting with JavaScript. I was challenged constantly which allowed me to experiment and to learn by failing many times. 
-
-
-
-
-Your README could still use a bit of work—what did you learn working on this project (about OOP, JS, etc?).
-• Clever thought to pass the game object into the Ball so it could access the restart method...you’re definitely getting into some more complicated concerns around game state here, and how tricky that can be to manage. One thing I would point out here is that your code isn’t as DRY as it could be in Game.js (take a look at your constructor and your restart method). What kind of light refactor could you do here to avoid duplicating all of that code?
+This was my first project working with OOP, and during this creation, I was able to learn best practices using webpack and interacting with JavaScript. I have a better understanding how the game rendoring process works which allows me to challenge myself constantly and to experiment with different techniques. 
 
 ## technologies used 
 * HTML 
