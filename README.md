@@ -47,6 +47,7 @@ This was my first project working with OOP, and during this creation, I was able
 * GIT
 * JavaScrpt  
 * Webpack
+* Eslint
 
 ##  Contributors
 
